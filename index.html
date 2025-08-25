@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src='//libtl.com/sdk.js' data-zone='9771118' data-sdk='show_9771118'></script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auto MoneTag Ads Reward System</title>
+  <title>Money Tree 🌴</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -188,7 +190,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Auto MoneTag Ads</h1>
+    <h1>Money Tree</h1>
     <div class="user-info">
       <p>Welcome, <span id="user-name"></span></p>
     </div>
@@ -240,9 +242,9 @@
   <script src="https://www.youtube.com/iframe_api"></script>
 
   <script>
-    const MIN_WITHDRAW_POINTS = 5;
-    const ADMIN_USER_ID = "1992802865";
-    const BOT_TOKEN = "7810145088:AAEnN-WTXu3LFJjUTMVzbWF0HRp2vsdWqKE";
+    const MIN_WITHDRAW_POINTS = 100;
+    const ADMIN_USER_ID = "5146589219";
+    const BOT_TOKEN = "7633393855:AAFeu07OuhX5l5bdcqgvP-chsF7E2zCtHbU";
     // Changed to Video IDs instead of full URLs
     const YOUTUBE_VIDEO_IDS = [
       "dQw4w9WgXcQ",
@@ -276,9 +278,9 @@
       // YT.PlayerState.ENDED is 0
       if (event.data === YT.PlayerState.ENDED && !videoWatchedForPoints) {
         videoWatchedForPoints = true; // Mark as watched
-        earnedPoints += 1.00;
+        earnedPoints += 3.00;
         updateStats();
-        alert('You earned 1 point for watching the full video!');
+        alert('You earned 3 point for watching the full video!');
       }
     }
 
@@ -291,10 +293,10 @@
     }
 
     function watchAd() {
-      if (typeof show_8743924 === 'function') {
-        show_8743924().then(() => {
+      if (typeof show_9771118 === 'function') {
+        show_9771118().then(() => {
           watchedAdsCount++;
-          earnedPoints += 0.50;
+          earnedPoints += 2.00;
           updateStats();
           updateProgressCircle();
         });
