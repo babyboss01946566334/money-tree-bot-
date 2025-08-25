@@ -1,394 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src='//libtl.com/sdk.js' data-zone='9771118' data-sdk='show_9771118'></script>
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Money Tree 🌴</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #FFD700;
-      --secondary-color: #4CAF50;
-      --danger-color: #FF6347;
-      --background-color: #121212;
-      --surface-color: #1e1e1e;
-      --text-color: #ffffff;
-      --shadow-color: rgba(255, 215, 0, 0.2);
-    }
-    body {
-      margin: 0;
-      padding: 20px;
-      background: var(--background-color);
-      color: var(--text-color);
-      font-family: 'Poppins', Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    .container {
-      text-align: center;
-      background: var(--surface-color);
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      width: 100%;
-      max-width: 350px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .container h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px var(--shadow-color);
-    }
-    .user-info {
-        margin-bottom: 20px;
-        font-size: 14px;
-        color: #ccc;
-    }
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px 0;
-      gap: 15px;
-    }
-    .stat-item {
-        background-color: rgba(0,0,0,0.2);
-        padding: 10px;
-        border-radius: 10px;
-        flex-grow: 1;
-    }
-    .stats p {
-      margin: 0;
-      font-size: 12px;
-      color: #ccc;
-      text-transform: uppercase;
-    }
-    .stats span {
-        font-size: 20px;
-        font-weight: 600;
-        color: var(--primary-color);
-    }
-    .progress-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      margin: 20px auto;
-      background: conic-gradient(var(--primary-color) 0deg, #333 0deg);
-      position: relative;
-    }
-    .progress-circle::before {
-        content: "";
-        position: absolute;
-        width: 80px;
-        height: 80px;
-        background: var(--surface-color);
-        border-radius: 50%;
-    }
-    .progress-circle span {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--primary-color);
-      position: relative;
-    }
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .buttons button {
-      width: 100%;
-      padding: 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
-    .buttons button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-    .buttons button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        transform: translateY(0);
-        box-shadow: none;
-    }
-    #watch-ad-btn { background: var(--primary-color); color: #000; }
-    #watch-video-btn { background: #c21d1d; color: white; }
-    .withdraw-btn {
-      background: linear-gradient(45deg, #e6b400, #a88502);
-      color: white;
-      margin-top: 5px;
-    }
-    .withdraw-section {
-      margin-top: 25px;
-      display: none;
-      padding: 20px;
-      background-color: rgba(0,0,0,0.3);
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: left;
-    }
-    .withdraw-section h3 {
-      color: var(--primary-color);
-      text-align: center;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
-    .withdraw-section input, .withdraw-section select, .withdraw-section button {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        border: 1px solid #444;
-        background-color: #333;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        box-sizing: border-box;
-    }
-    .withdraw-section button {
-        background-color: var(--secondary-color);
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-        transition: background-color 0.3s;
-    }
-    .withdraw-section button:hover {
-        background-color: #5ac05e;
-    }
-    #withdraw-status {
-        text-align: center;
-        margin-top: 10px;
-        font-size: 14px;
-    }
-    #video-container {
-      display: none;
-      margin-top: 20px;
-    }
-    #youtube-player {
-        border-radius: 10px;
-        max-width: 100%;
-        overflow: hidden; /* Ensures the iframe corners are also rounded */
-    }
-  </style>
+
+  <script src='//libtl.com/sdk.js' data-zone='9771118' data-sdk='show_9771118'></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Money Tree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-color: #FFD700; --secondary-color: #4CAF50; --danger-color: #FF6347; --info-color: #2196F3; --success-color: #00e676; --background-color: #121212; --surface-color: #1e1e1e; --text-color: #ffffff; }
+        body { margin: 0; padding: 20px; background: var(--background-color); color: var(--text-color); font-family: 'Poppins', Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+        .container { text-align: center; background: var(--surface-color); padding: 25px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.5); width: 100%; max-width: 350px; border: 1px solid rgba(255,255,255,0.1); }
+        h1 { font-size: 24px; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+        .user-info { margin-bottom: 20px; font-size: 14px; color: #ccc; }
+        .stats { display: flex; justify-content: space-around; margin: 20px 0; gap: 15px; }
+        .stat-item { background-color: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; flex-grow: 1; }
+        .stats p { margin: 0; font-size: 12px; color: #ccc; text-transform: uppercase; }
+        .stats span { font-size: 20px; font-weight: 600; color: var(--primary-color); }
+        .progress-circle { width: 100px; height: 100px; border-radius: 50%; display: grid; place-items: center; margin: 20px auto; background: conic-gradient(var(--primary-color) 0deg, #333 0deg); position: relative; }
+        .progress-circle::before { content: ""; position: absolute; width: 80px; height: 80px; background: var(--surface-color); border-radius: 50%; }
+        .progress-circle span { font-size: 22px; font-weight: 600; color: var(--primary-color); position: relative; }
+        .buttons { display: flex; flex-direction: column; gap: 10px; }
+        .buttons button { width: 100%; padding: 12px; font-size: 14px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 8px; -webkit-tap-highlight-color: transparent; }
+        #watch-ad-btn { background: var(--primary-color); color: #000; }
+        #claim-bonus-btn { background: var(--success-color); color: #000; }
+        #referral-btn { background: var(--info-color); color: white; }
+        .withdraw-btn { background: linear-gradient(45deg, #e6b400, #a88502); color: white; margin-top: 5px; }
+        .toggle-section { margin-top: 25px; display: none; padding: 20px; background-color: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: left; }
+        .toggle-section h3 { color: var(--primary-color); text-align: center; margin-top: 0; margin-bottom: 20px; }
+        .toggle-section input, .toggle-section select, .toggle-section button { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #444; background-color: #333; color: white; font-family: 'Poppins', sans-serif; box-sizing: border-box; }
+        .toggle-section button { background-color: var(--secondary-color); border: none; cursor: pointer; font-weight: 600; }
+        #referral-link { background-color: #222; padding: 10px; border-radius: 5px; word-wrap: break-word; cursor: pointer; }
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 999; color: var(--primary-color); font-size: 18px; }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Money Tree</h1>
-    <div class="user-info">
-      <p>Welcome, <span id="user-name"></span></p>
+    <div class="loading-overlay" id="loading-overlay"><p>Loading User Data...</p></div>
+    <div class="container" style="display: none;">
+        <h1>Money Tree</h1>
+        <div class="user-info"><p>Welcome, <span id="user-name">Guest</span></p></div>
+        <div class="stats">
+            <div class="stat-item"><p>Watched Ads</p><span id="watched-ads">0</span></div>
+            <div class="stat-item"><p>Earned Points</p><span id="earned-points">0.00</span></div>
+        </div>
+        <div class="progress-circle" id="progress-circle-container"><span id="ads-progress">0%</span></div>
+        <div class="buttons">
+            <button id="watch-ad-btn" onclick="watchAd()">Watch Ad</button>
+            <button id="claim-bonus-btn" onclick="claimReferralBonus()">🎁 Claim Referral Bonus (<span id="unclaimed-referrals">0</span>)</button>
+            <button id="referral-btn" onclick="showReferralSection()">💌 Invite & Earn</button>
+            <button class="withdraw-btn" onclick="showWithdrawForm()">Withdrawal Request</button>
+        </div>
+        <div id="referral-section" class="toggle-section">
+            <h3>Your Referral Link</h3>
+            <p>Invite friends and earn 5 points for each new user!</p>
+            <div id="referral-link-container"><p id="referral-link" onclick="copyReferralLink()">Click to copy</p><span id="copy-status"></span></div>
+        </div>
+        <div id="withdraw-section" class="toggle-section">
+            <h3>Withdrawal</h3>
+            <input type="number" id="withdraw-amount" placeholder="Enter points to withdraw" min="5">
+            <select id="payment-method" onchange="updateWithdrawPlaceholder()"><option value="Bkash">Bkash</option><option value="Binance ID">Binance ID</option></select>
+            <input type="text" id="withdraw-details" placeholder="Enter phone number">
+            <button onclick="requestWithdrawal()">Submit Request</button>
+            <p id="withdraw-status"></p>
+        </div>
     </div>
-    <div class="stats">
-      <div class="stat-item">
-        <p>Watched Ads</p>
-        <span id="watched-ads">0</span>
-      </div>
-      <div class="stat-item">
-        <p>Earned Points</p>
-        <span id="earned-points">0.00</span>
-      </div>
-    </div>
-    <div class="progress-circle" id="progress-circle-container">
-      <span id="ads-progress">0%</span>
-    </div>
-    <div class="buttons">
-      <button id="watch-ad-btn" onclick="watchAd()">Watch Ad</button>
-      <button id="watch-video-btn" onclick="watchVideo()">💰 YouTube Video Watch</button>
-      <button class="withdraw-btn" onclick="showWithdrawForm()">Withdrawal Request</button>
-    </div>
-    <div id="video-container">
-      <div id="youtube-player"></div>
-      <p style="color:#FFD700; font-size:12px;">Watch full video to earn 1 point</p>
-    </div>
-    <div id="withdraw-section" class="withdraw-section">
-      <h3>Withdrawal</h3>
-      <input type="number" id="withdraw-amount" placeholder="Enter points to withdraw" min="5">
-      <select id="payment-method" onchange="updateWithdrawPlaceholder()">
-        <option value="Bkash">Bkash</option>
-        <option value="Binance ID">Binance ID</option>
-      </select>
-      <input type="text" id="withdraw-details" placeholder="Enter phone number">
-      <button onclick="withdrawPoints()">Withdraw</button>
-      <p id="withdraw-status"></p>
-    </div>
-  </div>
+    <script>
+        (function(){ const adScript = document.createElement('script'); adScript.async = true; adScript.src = 'https://' + ['js','onclckmn','com'].join('.') + '/static/onclicka.js'; adScript.setAttribute('data-admpid', '310679'); document.head.appendChild(adScript); })();
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    <script>
+        // ===================================================================
+        // ****** আপনার তথ্য এখানে যোগ করুন ******
+        // ===================================================================
 
-  <script>
-    (function(){
-      const adScript = document.createElement('script');
-      adScript.async = true;
-      adScript.src = 'https://' + ['js','onclckmn','com'].join('.') + '/static/onclicka.js';
-      adScript.setAttribute('data-admpid', '310679');
-      document.head.appendChild(adScript);
-    })();
-  </script>
+        const firebaseConfig = {
+            // আপনার firebaseConfig কোডটি এখানে পেস্ট করুন
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-  <script src="https://www.youtube.com/iframe_api"></script>
+  apiKey: "AIzaSyANkFuPPFthsfrWNPwy6_vnFNhPJkPI5ew",
+  authDomain: "money-tree-bot.firebaseapp.com",
+  projectId: "money-tree-bot",
+  storageBucket: "money-tree-bot.firebasestorage.app",
+  messagingSenderId: "493331421972",
+  appId: "1:493331421972:web:28227bfb312680c7c84001",
+  measurementId: "G-38NSJXXG66"
+};
 
-  <script>
-    const MIN_WITHDRAW_POINTS = 100;
-    const ADMIN_USER_ID = "5146589219";
-    const BOT_TOKEN = "7633393855:AAFeu07OuhX5l5bdcqgvP-chsF7E2zCtHbU";
-    // Changed to Video IDs instead of full URLs
-    const YOUTUBE_VIDEO_IDS = [
-      "dQw4w9WgXcQ",
-      "9bZkp7q19f0",
-      "JGwWNGJdvx8"
-    ];
-    let watchedAdsCount = 0;
-    let earnedPoints = 0.00;
-    let player; // YouTube player object
-    let videoWatchedForPoints = false; // Prevents earning points multiple times
+        // আপনার টেলিগ্রাম বট টোকেন এখানে যোগ করুন
+        const BOT_TOKEN = "7633393855:AAFeu07OuhX5l5bdcqgvP-chsF7E2zCtHbU"; 
 
-    const telegramUserName = "@exampleUser";
-    document.getElementById("user-name").textContent = telegramUserName;
+        // আপনার টেলিগ্রাম অ্যাডমিন ইউজার আইডি এখানে যোগ করুন
+        const ADMIN_USER_ID = "5146589219";
 
-    // This function is required by the YouTube API
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('youtube-player', {
-        height: '158',
-        width: '280',
-        playerVars: {
-          'playsinline': 1
-        },
-        events: {
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
+        // ===================================================================
+        // ****** কোডের বাকি অংশ ******
+        // ===================================================================
 
-    // This function is called when the video player's state changes
-    function onPlayerStateChange(event) {
-      // YT.PlayerState.ENDED is 0
-      if (event.data === YT.PlayerState.ENDED && !videoWatchedForPoints) {
-        videoWatchedForPoints = true; // Mark as watched
-        earnedPoints += 3.00;
-        updateStats();
-        alert('You earned 3 point for watching the full video!');
-      }
-    }
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        let userDocRef = null;
+        let currentUserId = null;
 
-    if (localStorage.getItem('watchedAdsCount')) {
-      watchedAdsCount = parseInt(localStorage.getItem('watchedAdsCount'));
-      earnedPoints = parseFloat(localStorage.getItem('earnedPoints'));
-      document.getElementById('watched-ads').textContent = watchedAdsCount;
-      document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
-      updateProgressCircle();
-    }
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('userId');
+            const userName = urlParams.get('userName') || 'Guest';
+            const referrerId = urlParams.get('ref');
 
-    function watchAd() {
-      if (typeof show_9771118 === 'function') {
-        show_9771118().then(() => {
-          watchedAdsCount++;
-          earnedPoints += 2.00;
-          updateStats();
-          updateProgressCircle();
+            if (!userId) {
+                document.getElementById('loading-overlay').innerHTML = '<p style="color:red;padding:10px;">Error: Invalid user link. Please open from your Telegram bot.</p>';
+                return;
+            }
+            currentUserId = userId;
+
+            auth.signInAnonymously().then(() => {
+                userDocRef = db.collection('users').doc(userId);
+                userDocRef.onSnapshot(async (doc) => {
+                    if (!doc.exists) {
+                        const newUser = { name: userName, watchedAds: 0, earnedPoints: 0, createdAt: firebase.firestore.FieldValue.serverTimestamp() };
+                        await userDocRef.set(newUser);
+                        if (referrerId && referrerId !== userId) {
+                            await db.collection('referrals').doc(userId).set({
+                                referrer: referrerId,
+                                refereeName: userName,
+                                claimed: false,
+                                joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+                            });
+                        }
+                    } else {
+                        updateUI(doc.data());
+                    }
+                    document.getElementById('loading-overlay').style.display = 'none';
+                    document.querySelector('.container').style.display = 'block';
+                });
+                
+                db.collection('referrals').where('referrer', '==', userId).where('claimed', '==', false)
+                  .onSnapshot(snapshot => {
+                      document.getElementById('unclaimed-referrals').textContent = snapshot.size;
+                  });
+
+            }).catch(error => {
+                console.error("Auth/DB Error:", error);
+                document.getElementById('loading-overlay').innerText = 'Error: Could not connect.';
+            });
         });
-      }
-    }
 
-    function watchVideo() {
-      // Reset the watch flag for the new video
-      videoWatchedForPoints = false;
-      const videoContainer = document.getElementById('video-container');
-      const randomVideoId = YOUTUBE_VIDEO_IDS[Math.floor(Math.random() * YOUTUBE_VIDEO_IDS.length)];
-      
-      videoContainer.style.display = 'block';
-      // Load and play the new video
-      player.loadVideoById(randomVideoId);
-      player.playVideo();
-    }
-
-    function updateWithdrawPlaceholder() {
-        const method = document.getElementById('payment-method').value;
-        const detailsInput = document.getElementById('withdraw-details');
-        if (method === 'Binance ID') {
-            detailsInput.placeholder = 'Enter Binance ID';
-        } else {
-            detailsInput.placeholder = 'Enter phone number';
+        function updateUI(data) {
+            document.getElementById('user-name').textContent = data.name || 'Guest';
+            document.getElementById('watched-ads').textContent = data.watchedAds || 0;
+            document.getElementById('earned-points').textContent = (data.earnedPoints || 0).toFixed(2);
+            const percentage = Math.min(((data.watchedAds || 0) / 10) * 100, 100);
+            const degree = (percentage / 100) * 360;
+            document.getElementById('ads-progress').textContent = `${Math.floor(percentage)}%`;
+            document.getElementById('progress-circle-container').style.background = `conic-gradient(var(--primary-color) ${degree}deg, #333 ${degree}deg)`;
         }
-    }
 
-    function showWithdrawForm() {
-      document.getElementById('withdraw-section').style.display = 'block';
-      document.getElementById('video-container').style.display = 'none';
-      if (player && typeof player.stopVideo === 'function') {
-        player.stopVideo(); // Stop video if withdraw form is opened
-      }
-      updateWithdrawPlaceholder(); // Set initial placeholder
-    }
+        function watchAd() {
+            if (typeof show_9771118 === 'function') {
+                show_9771118().then(() => {
+                    const increment = firebase.firestore.FieldValue.increment;
+                    userDocRef.update({ watchedAds: increment(1), earnedPoints: increment(0.50) }).catch(err => console.error("Error:", err));
+                });
+            }
+        }
+        
+        async function claimReferralBonus() {
+            const claimButton = document.getElementById('claim-bonus-btn');
+            claimButton.disabled = true;
+            claimButton.textContent = 'Claiming...';
 
-    function withdrawPoints() {
-      const amount = document.getElementById('withdraw-amount').value;
-      const method = document.getElementById('payment-method').value;
-      const details = document.getElementById('withdraw-details').value;
+            const querySnapshot = await db.collection('referrals')
+                .where('referrer', '==', currentUserId)
+                .where('claimed', '==', false)
+                .get();
+            
+            if (querySnapshot.empty) {
+                alert("You have no new referral bonuses to claim.");
+                claimButton.disabled = false;
+                claimButton.innerHTML = '🎁 Claim Referral Bonus (<span id="unclaimed-referrals">0</span>)';
+                return;
+            }
 
-      if (amount < MIN_WITHDRAW_POINTS) {
-        document.getElementById('withdraw-status').textContent = `Minimum withdrawal amount is ${MIN_WITHDRAW_POINTS} points.`;
-        return;
-      }
+            const batch = db.batch();
+            const bonusPoints = querySnapshot.size * 5;
 
-      if (amount > earnedPoints) {
-        document.getElementById('withdraw-status').textContent = `Insufficient balance. You have ${earnedPoints.toFixed(2)} points.`;
-        return;
-      }
+            querySnapshot.forEach(doc => {
+                const ref = db.collection('referrals').doc(doc.id);
+                batch.update(ref, { claimed: true });
+            });
+            
+            const increment = firebase.firestore.FieldValue.increment;
+            batch.update(userDocRef, { earnedPoints: increment(bonusPoints) });
 
-      earnedPoints -= parseFloat(amount);
-      updateStats();
+            try {
+                await batch.commit();
+                alert(`Congratulations! You have claimed ${bonusPoints} points from ${querySnapshot.size} new referrals.`);
+            } catch (error) {
+                console.error("Error claiming bonus: ", error);
+                alert("Something went wrong. Please try again.");
+            } finally {
+                claimButton.disabled = false;
+                claimButton.innerHTML = `🎁 Claim Referral Bonus (<span id="unclaimed-referrals">${document.getElementById('unclaimed-referrals').textContent}</span>)`;
+            }
+        }
 
-      const msg = `🟡 *Withdraw Request* 🟡\n👤 User: ${telegramUserName}\n💰 Points: ${amount}\n📱 Method: ${method}\n📞 Details: ${details}\n🕒 Time: ${new Date().toLocaleString()}`;
-      sendTelegram(msg);
+        async function requestWithdrawal() {
+            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            const method = document.getElementById('payment-method').value;
+            const details = document.getElementById('withdraw-details').value;
+            const statusEl = document.getElementById('withdraw-status');
+            
+            if (!amount || amount < 5 || !details) {
+                statusEl.textContent = 'Please fill all fields correctly.'; return;
+            }
+            
+            statusEl.textContent = 'Submitting...';
+            const userData = (await userDocRef.get()).data();
+            
+            if (userData.earnedPoints < amount) {
+                statusEl.textContent = 'Insufficient balance.'; return;
+            }
+            
+            try {
+                await db.collection('withdrawals').add({
+                    userId: userDocRef.id,
+                    userName: userData.name,
+                    amount: amount,
+                    method: method,
+                    details: details,
+                    status: 'pending',
+                    requestedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                const msg = `🟡 *New Withdraw Request* 🟡\n\nUser: ${userData.name} (\`${userDocRef.id}\`)\nPoints: *${amount}*\nMethod: ${method}\nDetails: \`${details}\`\n\n*Action Required: Please review and process this request from the Firebase console.*`;
+                sendTelegram(msg);
 
-      document.getElementById('withdraw-status').textContent = '✅ Withdrawal request sent successfully!';
-      document.getElementById('withdraw-amount').value = '';
-      document.getElementById('withdraw-details').value = '';
-    }
+                statusEl.textContent = '✅ Request submitted for review!';
+                document.getElementById('withdraw-amount').value = '';
+                document.getElementById('withdraw-details').value = '';
+            } catch (error) {
+                console.error("Error submitting withdrawal:", error);
+                statusEl.textContent = 'An error occurred. Please try again.';
+            }
+        }
 
-    function updateStats() {
-      document.getElementById('watched-ads').textContent = watchedAdsCount;
-      document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
-      localStorage.setItem('watchedAdsCount', watchedAdsCount);
-      localStorage.setItem('earnedPoints', earnedPoints.toFixed(2));
-    }
+        function sendTelegram(message) {
+            if (!BOT_TOKEN || !ADMIN_USER_ID) {
+                console.warn("Telegram BOT_TOKEN or ADMIN_USER_ID is not set.");
+                return;
+            }
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: ADMIN_USER_ID,
+                    text: message,
+                    parse_mode: "Markdown"
+                })
+            }).catch(error => console.error("Telegram sending error:", error));
+        }
 
-    function updateProgressCircle() {
-      const percentage = Math.min((watchedAdsCount / 10) * 100, 100);
-      const degree = (percentage / 100) * 360;
-      document.getElementById('ads-progress').textContent = `${Math.floor(percentage)}%`;
-      document.getElementById('progress-circle-container').style.background = `conic-gradient(var(--primary-color) ${degree}deg, #333 ${degree}deg)`;
-    }
-
-    function sendTelegram(message) {
-      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: ADMIN_USER_ID,
-          text: message,
-          parse_mode: "Markdown"
-        })
-      })
-      .then(res => res.json())
-      .then(data => console.log("Message sent to Telegram", data))
-      .catch(err => console.error("Telegram Error:", err));
-    }
-  </script>
+        function hideAllSections() { document.querySelectorAll('.toggle-section').forEach(el => el.style.display = 'none'); }
+        function showWithdrawForm() { hideAllSections(); document.getElementById('withdraw-section').style.display = 'block'; updateWithdrawPlaceholder(); }
+        function showReferralSection() { hideAllSections(); const link = `${window.location.origin}${window.location.pathname}?ref=${currentUserId}`; document.getElementById('referral-link').textContent = link; document.getElementById('referral-section').style.display = 'block'; }
+        function updateWithdrawPlaceholder() { document.getElementById('withdraw-details').placeholder = (document.getElementById('payment-method').value === 'Binance ID') ? 'Enter Binance ID' : 'Enter phone number'; }
+        function copyReferralLink() { navigator.clipboard.writeText(document.getElementById('referral-link').textContent).then(() => { const s = document.getElementById('copy-status'); s.textContent = 'Copied!'; setTimeout(() => { s.textContent = ''; }, 2000); }); }
+    </script>
 </body>
 </html>
