@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto MoneTag Ads Reward System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #FFD700;
+      --secondary-color: #4CAF50;
+      --danger-color: #FF6347;
+      --background-color: #121212;
+      --surface-color: #1e1e1e;
+      --text-color: #ffffff;
+      --shadow-color: rgba(255, 215, 0, 0.2);
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: var(--background-color);
+      color: var(--text-color);
+      font-family: 'Poppins', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .container {
+      text-align: center;
+      background: var(--surface-color);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 350px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .container h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px var(--shadow-color);
+    }
+    .user-info {
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #ccc;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      gap: 15px;
+    }
+    .stat-item {
+        background-color: rgba(0,0,0,0.2);
+        padding: 10px;
+        border-radius: 10px;
+        flex-grow: 1;
+    }
+    .stats p {
+      margin: 0;
+      font-size: 12px;
+      color: #ccc;
+      text-transform: uppercase;
+    }
+    .stats span {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+    .progress-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 20px auto;
+      background: conic-gradient(var(--primary-color) 0deg, #333 0deg);
+      position: relative;
+    }
+    .progress-circle::before {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: var(--surface-color);
+        border-radius: 50%;
+    }
+    .progress-circle span {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary-color);
+      position: relative;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .buttons button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    .buttons button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .buttons button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: translateY(0);
+        box-shadow: none;
+    }
+    #watch-ad-btn { background: var(--primary-color); color: #000; }
+    #watch-video-btn { background: #c21d1d; color: white; }
+    .withdraw-btn {
+      background: linear-gradient(45deg, #e6b400, #a88502);
+      color: white;
+      margin-top: 5px;
+    }
+    .withdraw-section {
+      margin-top: 25px;
+      display: none;
+      padding: 20px;
+      background-color: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: left;
+    }
+    .withdraw-section h3 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    .withdraw-section input, .withdraw-section select, .withdraw-section button {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background-color: #333;
+        color: white;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+    }
+    .withdraw-section button {
+        background-color: var(--secondary-color);
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+    .withdraw-section button:hover {
+        background-color: #5ac05e;
+    }
+    #withdraw-status {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    #video-container {
+      display: none;
+      margin-top: 20px;
+    }
+    #youtube-player {
+        border-radius: 10px;
+        max-width: 100%;
+        overflow: hidden; /* Ensures the iframe corners are also rounded */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Auto MoneTag Ads</h1>
+    <div class="user-info">
+      <p>Welcome, <span id="user-name"></span></p>
+    </div>
+    <div class="stats">
+      <div class="stat-item">
+        <p>Watched Ads</p>
+        <span id="watched-ads">0</span>
+      </div>
+      <div class="stat-item">
+        <p>Earned Points</p>
+        <span id="earned-points">0.00</span>
+      </div>
+    </div>
+    <div class="progress-circle" id="progress-circle-container">
+      <span id="ads-progress">0%</span>
+    </div>
+    <div class="buttons">
+      <button id="watch-ad-btn" onclick="watchAd()">Watch Ad</button>
+      <button id="watch-video-btn" onclick="watchVideo()">💰 YouTube Video Watch</button>
+      <button class="withdraw-btn" onclick="showWithdrawForm()">Withdrawal Request</button>
+    </div>
+    <div id="video-container">
+      <div id="youtube-player"></div>
+      <p style="color:#FFD700; font-size:12px;">Watch full video to earn 1 point</p>
+    </div>
+    <div id="withdraw-section" class="withdraw-section">
+      <h3>Withdrawal</h3>
+      <input type="number" id="withdraw-amount" placeholder="Enter points to withdraw" min="5">
+      <select id="payment-method" onchange="updateWithdrawPlaceholder()">
+        <option value="Bkash">Bkash</option>
+        <option value="Binance ID">Binance ID</option>
+      </select>
+      <input type="text" id="withdraw-details" placeholder="Enter phone number">
+      <button onclick="withdrawPoints()">Withdraw</button>
+      <p id="withdraw-status"></p>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const adScript = document.createElement('script');
+      adScript.async = true;
+      adScript.src = 'https://' + ['js','onclckmn','com'].join('.') + '/static/onclicka.js';
+      adScript.setAttribute('data-admpid', '310679');
+      document.head.appendChild(adScript);
+    })();
+  </script>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+    const MIN_WITHDRAW_POINTS = 5;
+    const ADMIN_USER_ID = "1992802865";
+    const BOT_TOKEN = "7810145088:AAEnN-WTXu3LFJjUTMVzbWF0HRp2vsdWqKE";
+    // Changed to Video IDs instead of full URLs
+    const YOUTUBE_VIDEO_IDS = [
+      "dQw4w9WgXcQ",
+      "9bZkp7q19f0",
+      "JGwWNGJdvx8"
+    ];
+    let watchedAdsCount = 0;
+    let earnedPoints = 0.00;
+    let player; // YouTube player object
+    let videoWatchedForPoints = false; // Prevents earning points multiple times
+
+    const telegramUserName = "@exampleUser";
+    document.getElementById("user-name").textContent = telegramUserName;
+
+    // This function is required by the YouTube API
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+        height: '158',
+        width: '280',
+        playerVars: {
+          'playsinline': 1
+        },
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    // This function is called when the video player's state changes
+    function onPlayerStateChange(event) {
+      // YT.PlayerState.ENDED is 0
+      if (event.data === YT.PlayerState.ENDED && !videoWatchedForPoints) {
+        videoWatchedForPoints = true; // Mark as watched
+        earnedPoints += 1.00;
+        updateStats();
+        alert('You earned 1 point for watching the full video!');
+      }
+    }
+
+    if (localStorage.getItem('watchedAdsCount')) {
+      watchedAdsCount = parseInt(localStorage.getItem('watchedAdsCount'));
+      earnedPoints = parseFloat(localStorage.getItem('earnedPoints'));
+      document.getElementById('watched-ads').textContent = watchedAdsCount;
+      document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+      updateProgressCircle();
+    }
+
+    function watchAd() {
+      if (typeof show_8743924 === 'function') {
+        show_8743924().then(() => {
+          watchedAdsCount++;
+          earnedPoints += 0.50;
+          updateStats();
+          updateProgressCircle();
+        });
+      }
+    }
+
+    function watchVideo() {
+      // Reset the watch flag for the new video
+      videoWatchedForPoints = false;
+      const videoContainer = document.getElementById('video-container');
+      const randomVideoId = YOUTUBE_VIDEO_IDS[Math.floor(Math.random() * YOUTUBE_VIDEO_IDS.length)];
+      
+      videoContainer.style.display = 'block';
+      // Load and play the new video
+      player.loadVideoById(randomVideoId);
+      player.playVideo();
+    }
+
+    function updateWithdrawPlaceholder() {
+        const method = document.getElementById('payment-method').value;
+        const detailsInput = document.getElementById('withdraw-details');
+        if (method === 'Binance ID') {
+            detailsInput.placeholder = 'Enter Binance ID';
+        } else {
+            detailsInput.placeholder = 'Enter phone number';
+        }
+    }
+
+    function showWithdrawForm() {
+      document.getElementById('withdraw-section').style.display = 'block';
+      document.getElementById('video-container').style.display = 'none';
+      if (player && typeof player.stopVideo === 'function') {
+        player.stopVideo(); // Stop video if withdraw form is opened
+      }
+      updateWithdrawPlaceholder(); // Set initial placeholder
+    }
+
+    function withdrawPoints() {
+      const amount = document.getElementById('withdraw-amount').value;
+      const method = document.getElementById('payment-method').value;
+      const details = document.getElementById('withdraw-details').value;
+
+      if (amount < MIN_WITHDRAW_POINTS) {
+        document.getElementById('withdraw-status').textContent = `Minimum withdrawal amount is ${MIN_WITHDRAW_POINTS} points.`;
+        return;
+      }
+
+      if (amount > earnedPoints) {
+        document.getElementById('withdraw-status').textContent = `Insufficient balance. You have ${earnedPoints.toFixed(2)} points.`;
+        return;
+      }
+
+      earnedPoints -= parseFloat(amount);
+      updateStats();
+
+      const msg = `🟡 *Withdraw Request* 🟡\n👤 User: ${telegramUserName}\n💰 Points: ${amount}\n📱 Method: ${method}\n📞 Details: ${details}\n🕒 Time: ${new Date().toLocaleString()}`;
+      sendTelegram(msg);
+
+      document.getElementById('withdraw-status').textContent = '✅ Withdrawal request sent successfully!';
+      document.getElementById('withdraw-amount').value = '';
+      document.getElementById('withdraw-details').value = '';
+    }
+
+    function updateStats() {
+      document.getElementById('watched-ads').textContent = watchedAdsCount;
+      document.getElementById('earned-points').textContent = earnedPoints.toFixed(2);
+      localStorage.setItem('watchedAdsCount', watchedAdsCount);
+      localStorage.setItem('earnedPoints', earnedPoints.toFixed(2));
+    }
+
+    function updateProgressCircle() {
+      const percentage = Math.min((watchedAdsCount / 10) * 100, 100);
+      const degree = (percentage / 100) * 360;
+      document.getElementById('ads-progress').textContent = `${Math.floor(percentage)}%`;
+      document.getElementById('progress-circle-container').style.background = `conic-gradient(var(--primary-color) ${degree}deg, #333 ${degree}deg)`;
+    }
+
+    function sendTelegram(message) {
+      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: ADMIN_USER_ID,
+          text: message,
+          parse_mode: "Markdown"
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log("Message sent to Telegram", data))
+      .catch(err => console.error("Telegram Error:", err));
+    }
+  </script>
+</body>
+</html>
