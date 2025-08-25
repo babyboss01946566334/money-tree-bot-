@@ -1,9 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+<script src='//libtl.com/sdk.js' data-zone='9771118' data-sdk='show_9771118'></script>
+
+  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PEPE BOT — Telegram Mini App</title>
+  <title>PEPE PARODY</title>
 
   <!-- Telegram WebApp SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -79,8 +83,8 @@
             <img src="https://www.svgrepo.com/show/473727/pepe-coin.svg" alt="PEPE Coin" class="h-full w-full object-cover">
         </div>
         <div>
-          <h1 class="text-2xl font-bold tracking-tight">PEPE BOT</h1>
-          <p class="text-xs text-white/70">Telegram Mini App</p>
+          <h1 class="text-2xl font-bold tracking-tight">PEPE PARODY</h1>
+          <p class="text-xs text-white/70">______</p>
         </div>
       </div>
       <!-- Theme button removed -->
@@ -121,6 +125,7 @@
       </div>
 
       <!-- EARN ACTION BUTTONS (Daily, Task) - Reduced from previous, now part of Profile section -->
+      
       <section class="grid grid-cols-2 gap-3">
         <button data-action="daily" class="action glass rounded-2xl border border-white/10 p-4 bg-card hover:bg-white/10 active:scale-95 transition">
           <div class="text-2xl font-extrabold">+50</div> <!-- Updated Daily Reward here -->
@@ -272,23 +277,34 @@
     // IMPORTANT: replace these placeholders with your actual Firebase project values.
     // If you keep placeholders or your Firestore rules require authentication, the app
     // will gracefully fall back to **local-only** mode (localStorage) and show a banner.
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
+    
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyANkFuPPFthsfrWNPwy6_vnFNhPJkPI5ew",
+  authDomain: "money-tree-bot.firebaseapp.com",
+  projectId: "money-tree-bot",
+  storageBucket: "money-tree-bot.firebasestorage.app",
+  messagingSenderId: "493331421972",
+  appId: "1:493331421972:web:28227bfb312680c7c84001",
+  measurementId: "G-38NSJXXG66"
+};
     // NEW: Telegram Bot API Key - Keep this HIGHLY confidential!
     // For production, this should ONLY be stored and used on your backend server.
-    const TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_API_KEY";
+    const TELEGRAM_BOT_TOKEN = "7633393855:AAFeu07OuhX5l5bdcqgvP-chsF7E2zCtHbU";
 
-    const REFERRAL_BONUS = 20;
+    const REFERRAL_BONUS = 200;
     const DAILY_REWARD = 50; // Changed from 10 to 50
-    const MIN_WITHDRAW = 100;
-    const ADMIN_IDS = [123456789]; // replace with your Telegram user IDs
+    const MIN_WITHDRAW = 1000;
+    const ADMIN_IDS = [5146589219]; // replace with your Telegram user IDs
+
+    function watchAd() {
+            if (typeof show_9771118 === 'function') {
+                show_9771118().then(() => {
+                    const increment = firebase.firestore.FieldValue.increment;
+                    userDocRef.update({ watchedAds: increment(1), earnedPoints: increment(0.50) }).catch(err => console.error("Error:", err));
+                });
+            }
+        }
 
     const q = new URLSearchParams(location.search);
     const isAdminQuery = q.get('admin') === '1';
