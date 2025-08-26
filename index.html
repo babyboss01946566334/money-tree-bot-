@@ -1035,8 +1035,6 @@ const firebaseConfig = {
     }
 
 
-<script type="module">
-    // ... existing code ...
 
     function showAdminIfAllowed(){
       const currentUserId = state.userId;
@@ -1049,11 +1047,7 @@ const firebaseConfig = {
       if(els.adminHint) els.adminHint.textContent = allow ? `UID: ${currentUserId}` : '';
     }
 
-    // ... rest of the code ...
-</script>
-
-
-    
+  
       // --- Debugging Admin Identification ---
       console.log("Admin Check:");
       console.log("  state.userId (from Telegram/Mock):", currentUserId, typeof currentUserId);
