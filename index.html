@@ -1034,12 +1034,26 @@ const firebaseConfig = {
       els.wdAmount.value=''; els.wdAddress.value=''; showWdHint('Request submitted (local mode).');
     }
 
+
+<script type="module">
+    // ... existing code ...
+
     function showAdminIfAllowed(){
       const currentUserId = state.userId;
-      const parsedUserId = parseInt(currentUserId);
-      const isAdmin = ADMIN_IDS.includes(parsedUserId);
-      const isAdminFromQuery = isAdminQuery; // from URL param ?admin=1
+      // Use loose comparison to check both string and number formats
+      const isAdmin = ADMIN_IDS.some(id => id == currentUserId);
+      const isAdminFromQuery = isAdminQuery;
 
+      const allow = isAdminFromQuery || isAdmin;
+      if(els.adminPanel) els.adminPanel.classList.toggle('hidden', !allow);
+      if(els.adminHint) els.adminHint.textContent = allow ? `UID: ${currentUserId}` : '';
+    }
+
+    // ... rest of the code ...
+</script>
+
+
+    
       // --- Debugging Admin Identification ---
       console.log("Admin Check:");
       console.log("  state.userId (from Telegram/Mock):", currentUserId, typeof currentUserId);
